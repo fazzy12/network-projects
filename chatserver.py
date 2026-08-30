@@ -42,7 +42,7 @@ def handle_client(conn, addr):
                 break
             message = line.strip()
             print(f"{username}: {message}")
-            braodcast(f"{username}: {message}, sender_file=file")
+            braodcast(f"{username}: {message}", sender_file=file)
     finally:
         clients.remove((file, username))
         print(f"[-] {username} disconnected")
@@ -61,6 +61,7 @@ def main():
         conn, addr = server_sock.accept()
         
         thread = threading.Thread(target=handle_client, args=(conn, addr))
+        thread.start()
 
 
 if __name__ == "__main__":
