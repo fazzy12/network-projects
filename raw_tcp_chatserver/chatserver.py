@@ -19,7 +19,7 @@ def braodcast(message, sender_file=None):
         if file is not sender_file:
             try:
                 file.write(message + "\n")
-                  # make sure it actually goes out over the network
+                  # to make sure it actually goes out over the network
                 file.flush()
             except OSError:
                 pass
